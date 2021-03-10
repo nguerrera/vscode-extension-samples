@@ -2,24 +2,26 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
-import {
+import server from 'vscode-languageserver/node.js';
+const {
 	createConnection,
 	TextDocuments,
-	Diagnostic,
 	DiagnosticSeverity,
 	ProposedFeatures,
-	InitializeParams,
 	DidChangeConfigurationNotification,
-	CompletionItem,
 	CompletionItemKind,
-	TextDocumentPositionParams,
 	TextDocumentSyncKind,
-	InitializeResult
-} from 'vscode-languageserver/node';
+} = server;
+type InitializeParams = server.InitializeParams;
+type TextDocuments<T> = server.TextDocuments<T>;
+type Diagnostic = server.Diagnostic;
+type InitializeResult = server.InitializeResult;
+type CompletionItem = server.CompletionItem;
+type TextDocumentPositionParams = server.TextDocumentPositionParams;
 
-import {
-	TextDocument
-} from 'vscode-languageserver-textdocument';
+import textdocument from 'vscode-languageserver-textdocument';
+const { TextDocument } = textdocument;
+type TextDocument = textdocument.TextDocument;
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
